@@ -43,7 +43,7 @@ export class LoginInsecureComponent {
         this.findUser = this.users.find((user: Users) => user.email == this.email)
 
         if (this.findUser) {
-          this.router.navigate(['/dashboard-insecure'])
+          this.router.navigate(['/dashboard-insecure'], { queryParams: { id: this.findUser.id, login: this.findUser.email, password: this.findUser.password } })
         } else {
           alert('Usuário não localizado. Cadastre-se!')
           this.router.navigate([''])
