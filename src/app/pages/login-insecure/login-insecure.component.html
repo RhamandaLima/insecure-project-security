@@ -1,0 +1,35 @@
+<div class="cabecalho">
+  <h1>Identity and Authentication Failure Control</h1>
+  <mat-divider></mat-divider>
+</div>
+
+<div class="cards-status">
+  <div class="info-logins">
+    <mat-card class="mat-card">
+      <p class="login-title">LOGIN</p>
+      <mat-divider class="second-divider"></mat-divider>
+      <div class="formulario-login">
+        <div class="alinha">
+          <form class="formulario" [formGroup]="loginForm">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>E-mail</mat-label>
+              <input matInput placeholder="" value="" formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Senha</mat-label>
+              <input matInput formControlName="password" autocomplete="off">
+            </mat-form-field>
+          </form>
+          <div class="buttons-login">
+            <button class="botao-salvar" (click)="Login()">Acessar</button>
+            <button class="botao-cancelar" routerLink="/">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+    <span class="new-register">Ainda não tem conta? <span class="new-register-link"
+        routerLink="/insecure-registration-form">Cadastre-se.</span></span>
+  </div>
+</div>

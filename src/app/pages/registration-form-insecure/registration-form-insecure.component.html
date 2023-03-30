@@ -1,0 +1,71 @@
+<mat-card class="form">
+  <mat-card-header class="form-header">
+    <mat-card-title class="form-header-title">Complete o seu cadastro</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="registrationInsecureForm">
+      <div id="informacoes-pessoais">
+        <h1 class="form-content-title">Informações pessoais</h1>
+        <div class="form-personal-info">
+          <div class="fieds-1">
+            <mat-form-field appearance="outline" class="form-fied-register-name" floatLabel="always">
+              <mat-label class="input-size">Nome completo</mat-label>
+              <input matInput type="text" class="input-size" formControlName="name" maxlength="101">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label class="input-size">Data de nascimento</mat-label>
+              <input matInput [matDatepicker]="picker" readonly class="input-size" formControlName="birthday">
+              <mat-datepicker-toggle matIconSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="fieds-1">
+            <mat-form-field appearance="outline" class="form-fied-register-cpf" floatLabel="always">
+              <mat-label class="input-size">CPF</mat-label>
+              <input matInput type="text" class="input-size" formControlName="cpf" mask="000.000.000-00" maxlength="14">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-fied-register-cpf" floatLabel="always">
+              <mat-label class="input-size">Telefone</mat-label>
+              <input matInput class="input-size" formControlName="phone" maxlength="15" mask="(00) 00000-0000">
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="informacoes-de-acesso" class="form-user">
+        <h1 class="form-content-title">Informações de acesso</h1>
+        <div class="form-user-info">
+          <div class="fieds-1">
+            <mat-form-field appearance="outline" class="form-fied-register-user" floatLabel="always">
+              <mat-label class="input-size">E-mail:</mat-label>
+              <input matInput type="text" class="input-size" formControlName="email">
+              <mat-hint class="form-content-warn">O e-mail será utilizado para
+                realizar o login.</mat-hint>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-fied-register-user" floatLabel="always">
+              <mat-label class="input-size">Senha</mat-label>
+              <input matInput minlength="6" maxlength="12" class="input-size" formControlName="password"
+                autocomplete="off">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </form>
+    <p id="space-password-hint" class="form-content-warn space-password-hint">Ao preencher o formulário de cadastro você
+      permite que a IAF Control salve as suas
+      informações.</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button class="button-register" (click)="registerDataForm()">CADASTRAR</button>
+  </mat-card-actions>
+</mat-card>
