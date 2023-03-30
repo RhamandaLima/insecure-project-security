@@ -4,6 +4,8 @@ import { Users } from './../../services/users';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-registration-form-insecure',
@@ -14,7 +16,10 @@ export class RegistrationFormInsecureComponent {
 
   registrationInsecureForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, public service: UsersService, private router: Router) { }
+  title: string = '';
+  message: string = '';
+
+  constructor(private fb: FormBuilder, public service: UsersService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.createRegistrationForm();
@@ -52,8 +57,16 @@ export class RegistrationFormInsecureComponent {
         this.router.navigate(['/confirm-insecure-registration'])
       },
       error: (err) => {
-        alert(err)
+        this.title = 'Não foi possível concluir o cadastro'
+        this.message = err;
+        this.openDialog(this.title, this.message);
       }
+    })
+  }
+
+  public openDialog(title: string, message: string): void {
+    this.dialog.open(DialogComponent, {
+      data: { title: title, message: message }
     })
   }
 

@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-login-insecure',
@@ -17,10 +19,12 @@ export class LoginInsecureComponent {
   password: string = '';
 
   users: any;
-
   findUser: any;
 
-  constructor(private fb: FormBuilder, public service: UsersService, private router: Router) { }
+  title: string = '';
+  message: string = '';
+
+  constructor(private fb: FormBuilder, public service: UsersService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -45,13 +49,23 @@ export class LoginInsecureComponent {
         if (this.findUser) {
           this.router.navigate(['/dashboard-insecure'], { queryParams: { id: this.findUser.id, login: this.findUser.email, password: this.findUser.password } })
         } else {
-          alert('Usuário não localizado. Cadastre-se!')
-          this.router.navigate([''])
+          this.title = 'Usuário não localizado'
+          this.message = 'Realize o seu cadastro.';
+          this.openDialog(this.title, this.message);
+          this.router.navigate(['/insecure-registration-form'])
         }
       },
       error: (err) => {
-        alert(err)
+        this.title = 'Usuário não localizado'
+        this.message = err;
+        this.openDialog(this.title, this.message);
       }
+    })
+  }
+
+  public openDialog(title: string, message: string): void {
+    this.dialog.open(DialogComponent, {
+      data: { title: title, message: message }
     })
   }
 }
