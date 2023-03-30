@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "name": "Teste",
+      "birthday": "2023-03-16T03:00:00.000Z",
+      "cpf": "88889889898989",
+      "phone": "859888879558",
+      "email": "teste@tesntand.com.br",
+      "password": "senhaazulsa",
+      "id": 1
+    },
+    {
+      "name": "Outro",
+      "birthday": "2023-03-10T03:00:00.000Z",
+      "cpf": "9898959595959",
+      "phone": "95598976625",
+      "email": "jjdijijd@fifjifj",
+      "password": "tatandofaz",
+      "id": 2
+    }
+  ]
+}

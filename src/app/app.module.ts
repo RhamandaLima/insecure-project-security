@@ -21,6 +21,7 @@ import { RegistrationFormInsecureComponent } from './pages/registration-form-ins
 import { RegistrationConfirmationInsecureComponent } from './pages/registration-confirmation-insecure/registration-confirmation-insecure.component';
 import { LoginInsecureComponent } from './pages/login-insecure/login-insecure.component';
 import { DashboardInsecureComponent } from './pages/dashboard-insecure/dashboard-insecure.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { DashboardInsecureComponent } from './pages/dashboard-insecure/dashboard
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
